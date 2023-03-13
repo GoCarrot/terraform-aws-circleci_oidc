@@ -36,7 +36,7 @@ resource "aws_iam_openid_connect_provider" "circleci" {
     "${var.organization_id}",
   ]
 
-  thumbprint_list = [for thumbprint in var.thumbprint : lower(replace(thumbrint, ":", ""))]
+  thumbprint_list = [for thumbprint in var.thumbprints : lower(replace(thumbprint, ":", ""))]
 
   tags = local.tags
 }
