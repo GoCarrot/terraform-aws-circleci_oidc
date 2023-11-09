@@ -29,6 +29,10 @@ locals {
   tags = { for key, value in var.tags : key => value if lookup(data.aws_default_tags.tags.tags, key, null) != value }
 }
 
+data "tls_certificate" "circleci" {
+  url = "https://${local.circleci_oidc_url}/.well-known/openid-configuration"
+}
+
 resource "aws_iam_openid_connect_provider" "circleci" {
   url = "https://${local.circleci_oidc_url}"
 
@@ -36,7 +40,9 @@ resource "aws_iam_openid_connect_provider" "circleci" {
     "${var.organization_id}",
   ]
 
-  thumbprint_list = [for thumbprint in var.thumbprints : lower(replace(thumbprint, ":", ""))]
+  # Get the fingerprint of the first certificate (i.e. the root CA) in the CircleCI TLS certificate chain
+  # Ref: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html
+  thumbprint_list = [ data.tls_certificate.circleci.certificates[0].sha1_fingerprint ]
 
   tags = local.tags
 }
