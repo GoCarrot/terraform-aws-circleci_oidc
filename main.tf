@@ -30,7 +30,7 @@ locals {
 }
 
 data "tls_certificate" "circleci" {
-  url = "https://${local.circleci_oidc_url}/.well-known/openid-configuration"
+  url = "https://${local.circleci_oidc_url}"
 }
 
 resource "aws_iam_openid_connect_provider" "circleci" {
