@@ -1,8 +1,6 @@
-## 0.2.0
+## 0.1.2
 
-**BREAKING CHANGE** the `thumprints` variable has been deleted in lieu of reading the thumbprint directly from the CircleCI OIDC endpoint TLS certificate
-
-* Read certificate thumbprint directly from CircleCI TLS certificate
+* Read certificate thumbprint directly from CircleCI TLS certificate if `var.thumbprints` is empty
 
 ## 0.1.1
 
