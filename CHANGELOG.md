@@ -1,3 +1,7 @@
+## 0.1.2
+
+* Read certificate thumbprint directly from CircleCI TLS certificate if `var.thumbprints` is empty
+
 ## 0.1.1
 
 BUG FIXES:
