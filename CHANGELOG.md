@@ -1,6 +1,12 @@
 ## 0.1.2
 
-* Read certificate thumbprint directly from CircleCI TLS certificate if `var.thumbprints` is empty
+ENHANCEMENTS:
+
+* Read certificate thumbprint directly from CircleCI TLS certificate if `var.thumbprints` is empty or null.
+
+SPECIAL THANKS:
+
+* [@TonyLovesDevOps](https://github.com/TonyLovesDevOps)
 
 ## 0.1.1
 
