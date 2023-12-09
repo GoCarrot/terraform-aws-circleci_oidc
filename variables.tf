@@ -19,7 +19,11 @@ variable "organization_id" {
 
 variable "thumbprints" {
   type        = list(string)
-  description = "The OIDC thumbprints used for the OIDC provider. You should probably use the default."
+  description = <<-EOT
+  The OIDC thumbprints used for the OIDC provider.
+  If empty or null will determine the correct thumbprint from oidc.circleci.com.
+  Defaults to the correct thumbrint from oidc.circleci.com as independently verified on 2023-01-06.
+  EOT
   default     = ["9E:99:A4:8A:99:60:B1:49:26:BB:7F:3B:02:E2:2D:A2:B0:AB:72:80"]
 }
 
